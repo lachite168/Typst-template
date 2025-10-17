@@ -1,3 +1,6 @@
+// for table
+#import "@preview/pillar:0.3.3"
+
 #let project(title: (), subtitle: none, authors: (), body) = {
   // Set the document's basic properties.
   set document(author: authors, title: title)
@@ -84,8 +87,6 @@
   show link: set text(fill: blue)
   
   // for table
-  import "@preview/pillar:0.3.3"
-  
   set table(inset: (x: 0.8em, y: 0.6em), stroke: none)
   set table.hline(stroke: 0.6pt)
   set table.vline(stroke: 0.6pt)
@@ -109,6 +110,7 @@
 }
 
 // for table
+// example cols: "c|ccc"
 #let tbl(header, cells, footer: none, cols: none) = {
   if footer == none {
     if cols == none {
