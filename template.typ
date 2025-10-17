@@ -1,4 +1,4 @@
-#let project(title: (), subtitle: (), authors: (), body) = {
+#let project(title, subtitle: none, authors, body) = {
 
 // Set the document's basic properties.
 set document(author: authors, title: title)
@@ -84,6 +84,66 @@ show ref: it => {
 show math.equation: set text(font:"Cambria Math")
 
 show link: set text(fill: blue)
+
+// for table
+import "@preview/pillar:0.3.3"
+
+set table(inset: (x: 0.8em, y: 0.6em), stroke: none)
+set table.hline(stroke: 0.6pt)
+set table.vline(stroke: 0.6pt)
+
+let tbl(header, cells, footer: none, cols: none) = {
+  if footer == none {
+    if cols == none {
+        table(
+            columns: header.len(),
+            table.hline(),
+            table.header(..header.flatten()),
+            table.hline(),
+            ..cells,
+            table.hline(),
+        )
+    }
+    else {
+        table(
+            ..pillar.cols(cols),
+            columns: header.len(),
+            table.hline(),
+            table.header(..header.flatten()),
+            table.hline(),
+            ..cells,
+            table.hline(),
+        )
+    }
+  }
+  else{
+    if cols == none {
+        table(
+            columns: header.len(),
+            table.hline(),
+            table.header(..header.flatten()),
+            table.hline(),
+            ..cells,
+            table.hline(),
+            table.footer(..footer.flatten()),
+            table.hline()
+        )
+    }
+    else {
+        table(
+            ..pillar.cols(cols),
+            columns: header.len(),
+            table.hline(),
+            table.header(..header.flatten()),
+            table.hline(),
+            ..cells,
+            table.hline(),
+            table.footer(..footer.flatten()),
+            table.hline()
+        )
+    }
+  }
+}
 
 // for footnote
 set footnote(
