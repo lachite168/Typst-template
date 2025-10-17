@@ -92,7 +92,25 @@ set table(inset: (x: 0.8em, y: 0.6em), stroke: none)
 set table.hline(stroke: 0.6pt)
 set table.vline(stroke: 0.6pt)
 
-let tbl(header, cells, footer: none, cols: none) = {
+// for footnote
+set footnote(
+  numbering: (..args) => {
+    "*" + str(args.pos().at(0))
+  },
+)
+
+// for spaceing
+show regex("[\\P{latin}&&[[:^ascii:]]][\\p{latin}[[:ascii:]]]|[\\p{latin}[[:ascii:]]][\\P{latin}&&[[:^ascii:]]]") : it => {
+    let a = it.text.match(regex("(.)(.)"))
+    a.captures.at(0)+h(0.25em)+a.captures.at(1)
+}
+
+body
+
+}
+
+// for table
+#let tbl(header, cells, footer: none, cols: none) = {
   if footer == none {
     if cols == none {
         table(
@@ -143,20 +161,4 @@ let tbl(header, cells, footer: none, cols: none) = {
         )
     }
   }
-}
-
-// for footnote
-set footnote(
-  numbering: (..args) => {
-    "*" + str(args.pos().at(0))
-  },
-)
-
-// for spaceing
-show regex("[\\P{latin}&&[[:^ascii:]]][\\p{latin}[[:ascii:]]]|[\\p{latin}[[:ascii:]]][\\P{latin}&&[[:^ascii:]]]") : it => {
-    let a = it.text.match(regex("(.)(.)"))
-    a.captures.at(0)+h(0.25em)+a.captures.at(1)
-}
-
-body
 }
