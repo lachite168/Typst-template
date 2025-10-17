@@ -90,6 +90,9 @@
   set table(inset: (x: 0.8em, y: 0.6em), stroke: none)
   set table.hline(stroke: 0.6pt)
   set table.vline(stroke: 0.6pt)
+  show figure.where(
+    kind: table
+  ): set figure.caption(position: top)
   
   // for footnote
   set footnote(
@@ -160,12 +163,11 @@
   }
 }
 
-#let ftbl(caption, supplement: "Tbl", ..body) = {
+#let ftbl(caption, ..body) = {
   figure(
     caption: caption,
-    supplement: supplement,
     tbl(
-      ..body,
+      ..body
     ),
   )
 }
@@ -179,7 +181,8 @@
 }
 
 #let fimg(caption, ..body) = {
-  img(
-    ..body,
+  figure(
+    caption: caption,
+    ..body
   )
 }
