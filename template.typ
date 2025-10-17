@@ -110,7 +110,6 @@
 }
 
 // for table
-// example cols: "c|ccc"
 #let tbl(header, cells, footer: none, cols: none) = {
   if footer == none {
     if cols == none {
@@ -159,4 +158,28 @@
       )
     }
   }
+}
+
+#let ftbl(caption, supplement: "Tbl", ..body) = {
+  figure(
+    caption: caption,
+    supplement: supplement,
+    tbl(
+      ..body,
+    ),
+  )
+}
+
+// for image
+#let img(path, width: 70%) = {
+  image(
+    pass,
+    width: width,
+  )
+}
+
+#let fimg(caption, ..body) = {
+  img(
+    ..body,
+  )
 }
