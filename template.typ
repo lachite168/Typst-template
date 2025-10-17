@@ -1,4 +1,4 @@
-#let project(title, subtitle: none, authors, body) = {
+#let project(title: (), subtitle: (none), authors: (), body) = {
 
 // Set the document's basic properties.
 set document(author: authors, title: title)
