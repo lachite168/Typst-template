@@ -91,7 +91,7 @@
   set table.hline(stroke: 0.6pt)
   set table.vline(stroke: 0.6pt)
   show figure.where(
-    kind: table
+    kind: table,
   ): set figure.caption(position: top)
   
   // for footnote
@@ -167,7 +167,7 @@
   figure(
     caption: caption,
     tbl(
-      ..body
+      ..body,
     ),
   )
 }
@@ -183,6 +183,6 @@
 #let fimg(caption, ..body) = {
   figure(
     caption: caption,
-    ..body
+    ..body,
   )
 }
