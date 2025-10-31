@@ -56,7 +56,7 @@
     grid(
       columns: 1fr * calc.min(3, authors.len()),
       gutter: 1em,
-      ..authors.map(author => align(right, author)),
+      ..authors.map(author => align(center, author)),
     ),
   )
   
@@ -106,7 +106,13 @@
     "[\\P{latin}&&[[:^ascii:]]][\\p{latin}[[:ascii:]]]|[\\p{latin}[[:ascii:]]][\\P{latin}&&[[:^ascii:]]]",
   ): it => {
     let a = it.text.match(regex("(.)(.)"))
-    a.captures.at(0) + h(0.25em) + a.captures.at(1)
+
+    if a != none {
+      a.captures.at(0) + h(0.25em) + a.captures.at(1)
+    }
+    else {
+      it
+    }
   }
   
   body
