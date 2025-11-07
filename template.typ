@@ -181,7 +181,7 @@
 // for image
 #let img(path, width: 70%) = {
   image(
-    pass,
+    path,
     width: width,
   )
 }
