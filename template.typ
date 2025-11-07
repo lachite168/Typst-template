@@ -188,7 +188,9 @@
 
 #let fimg(caption, ..body) = {
   figure(
-    caption: caption,
-    ..body,
+    img(
+      caption: caption,
+      ..body,
+    )
   )
 }
