@@ -83,6 +83,13 @@
     }
   }
   show math.equation: set text(font: "Cambria Math")
+  show math.equation.where(block: true): it => {
+    set align(left)
+    grid(
+        columns: (2em, auto),
+        [],it
+    )
+  }
   
   show link: set text(fill: blue)
   
